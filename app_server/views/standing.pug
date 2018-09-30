@@ -1,9 +1,13 @@
 extends layout
 
 block content
-  h1= 'Jokerit final standings in KHL each year.'
-  ul
-    each winner in winners
-      li= winner.year + ': '
-      h3= winner.team
+  .subhead
+    h2= 'Jokerit final standings in KHL each year.'
+
+  .body-ul
+    ul
+      .body-item
+        each winner in winners
+          li= winner.year + ': '
+          h4= winner.team
 
