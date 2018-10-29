@@ -7,8 +7,8 @@ const CaptainSchema = new mongoose.Schema({year:String, player:String});
 /* Models will contain compiled instances of the schemas
  * so they can be used in the app later on
  */
-mongoose.model('Standing', StandingSchema, 'Standings');
-mongoose.model('Captain', CaptainSchema,'Captains');
+mongoose.model('Standing', StandingSchema, 'Standing');
+mongoose.model('Captain', CaptainSchema,'Captain');
 
 
 

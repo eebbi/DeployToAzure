@@ -150,9 +150,17 @@ a:hover {
 }
 
 .body-item {
-  border: 2px solid rgba(000,000,000, 0.2);
   margin: 20px;
   text-align: center;
+}
+
+.item {
+  border-radius: 12px;
+  background-color: rgba(000,000,000, 0.1);
+  margin-top: 8px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .body-item h4 {

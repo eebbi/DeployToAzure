@@ -8,6 +8,7 @@ block content
     ul
       .body-item
         each winner in winners
-          li= winner.year + ': '
-          h4= winner.team
+          .item
+            li= winner.year + ': '
+              h4= winner.team
 
