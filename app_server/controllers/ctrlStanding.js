@@ -1,14 +1,37 @@
+const request = require('request');
+const apiURL = require('./apiURLs');
 
-const winnerlist = function(req, res){
-    res.render('standing',{
-        winners:
-        [
-            {year:'2014-2015', team:'6.'},
-            {year:'2015-2016', team:'10.'},
-            {year:'2016-2017', team:'13.'},
-            {year:'2017-2018', team:'5.'}
-        ]});
+const standinglist = function(req, res){
+
+    const path = '/api/standing';
+    const requestOptions = {
+        url : apiURL.server + path,
+        method : 'GET',
+        json : {},
+        qs : {}
+    };
+
+    request(
+        requestOptions,
+        function (err, response, body){
+            if (err){
+                res.render('error', {message: err.message});
+            }
+            else if (response.statusCode !== 200){
+                res.render('error', {message: 'Error accessing API: ' + response.statusMessage + " ("+ response.statusCode + ")" });
+            }
+            else if (!(body instanceof Array)) {
+                res.render('error', {message: 'Unexpected response data'});
+            }
+            else if (!body.length){
+                res.render('error', {message: 'No documents in collection'});
+            }
+            else {
+                res.render('standing', {standings: body});
+            }
+        }
+    );
 };
 module.exports = {
-    winnerlist
+    standinglist
 };

@@ -8,7 +8,7 @@ const ctrlCaptain = require('../controllers/ctrlCaptain'); // ... for the the li
 
 // Defining the routes and associating the routes to their corresponding controllers
 router.get('/', ctrlMain.index);  // Home page
-router.get('/standing', ctrlStanding.winnerlist);  // List of World Cup winners (countries)
-router.get('/captain', ctrlCaptain.winnerlist);  // List of Golden ball winners (players)
+router.get('/standing', ctrlStanding.standinglist);  // List of World Cup winners (countries)
+router.get('/captain', ctrlCaptain.captainlist);  // List of Golden ball winners (players)
 
 module.exports = router;

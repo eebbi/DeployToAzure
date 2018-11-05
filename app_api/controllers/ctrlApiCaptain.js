@@ -1,11 +1,10 @@
 // Get access to the database connection
 const mongoose = require('mongoose');
 
-// Get access to the 'Captain' model so we can interact with the GoldenBallWinners collection
 const captainModel = mongoose.model('Captain');
 
 const itemList = function (req, res) {
-    captainModel.find({}, function(err, winners){
+    captainModel.find({}, function(err, captains){
         if (err){
             res
                 .status(404)
@@ -14,14 +13,20 @@ const itemList = function (req, res) {
         else{
             res
                 .status(200)
-                .json(winners);
+                .json(captains);
         }
     });};
 
 const addItem = function (req, res) {
-    res
-        .status(201)
-        .json({"Add player" : "Work in progress"});
+    captainModel.create(req.body, function(err, newCaptain){
+            if (err){
+                res.status(400).json(err);
+            }
+            else{
+                res.status(201).json(newCaptain);
+            }
+        }
+    );
 };
 
 module.exports = {
