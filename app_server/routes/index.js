@@ -11,4 +11,9 @@ router.get('/', ctrlMain.index);  // Home page
 router.get('/standing', ctrlStanding.standinglist);  // List of World Cup winners (countries)
 router.get('/captain', ctrlCaptain.captainlist);  // List of Golden ball winners (players)
 
+router
+    .route('/standing/add')
+    .get(ctrlStanding.showForm)
+    .post(ctrlStanding.addData);
+
 module.exports = router;

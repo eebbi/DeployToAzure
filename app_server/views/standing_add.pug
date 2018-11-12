@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .subhead
+    h2= 'Jokerit final standings in KHL each year.'
+
+  .body-ul
+    form(action="", method="post")
+      label Year
+        input.form-in(name="year")
+      label Team
+        input.form-in(name="team")
+      .add
+        button Add
+
