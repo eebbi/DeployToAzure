@@ -1,6 +1,10 @@
 const request = require('request');
 const apiURL = require('./apiURLs');
 
+const showForm = function(req, res) {
+    res.render('captain_add');
+};
+
 const captainlist = function(req, res){
 
     const path = '/api/captain';
@@ -33,6 +37,34 @@ const captainlist = function(req, res){
     );
 };
 
+const addData = function(req, res) {
+    const path = '/api/captain';
+
+    const postdata = {
+        year: req.body.year,
+        player: req.body.player
+    };
+
+    const requestOptions = {
+        url : apiURL.server + path,
+        method : 'POST',
+        json : postdata
+    };
+
+    request(
+        requestOptions,
+        function (err, response){
+            if (response.statusCode === 201) {
+                res.redirect('/captain');
+            } else {
+                res.render('error', {message: 'Error adding data: ' + response.statusMessage });
+            }
+        }
+    );
+};
+
 module.exports = {
-    captainlist
+    captainlist,
+    showForm,
+    addData
 };

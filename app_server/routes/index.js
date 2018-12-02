@@ -16,4 +16,9 @@ router
     .get(ctrlStanding.showForm)
     .post(ctrlStanding.addData);
 
+router
+    .route('/captain/add')
+    .get(ctrlCaptain.showForm)
+    .post(ctrlCaptain.addData);
+
 module.exports = router;
